@@ -130,7 +130,7 @@ class Cegis():
 
 if __name__ == '__main__':
 	pwa = PWA()
-	cegis = Cegis(pwa, [2, 10, 10, 10])
+	cegis = Cegis(pwa, [2, 10, 10, 10, 10])
 	try:
 		cegis.learn(max_iterations=50000)
 		# cegis.solve()
