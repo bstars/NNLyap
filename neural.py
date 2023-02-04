@@ -8,11 +8,7 @@ from helper_funcs import *
 
 
 class ReluFCNet(nn.Module, Formulated):
-    """ReluFCNet 
-    Fully-connected neural net with relu activation for hidden layers, no activation for final output.
-    This Class should not be used directly. Use LYNet and DNet instead
-    :param nn: _description_
-    """
+
     def __init__(self, dims, bias=False, positive_w_final = False) -> None:
         super().__init__()
         layers = []
@@ -65,6 +61,8 @@ class ReluFCNet(nn.Module, Formulated):
         :param xs: A list of gp.MVar, indicating the inputs of neural network
         :param l: Lower bounds of input
         :param u: Upper bounds of input
+
+        :return: A list of gp.MVar, indicating the outs of neural network
         """
         n_input = len(xs)
         ws, bs = self.get_param_pair()

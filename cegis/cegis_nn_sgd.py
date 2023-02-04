@@ -72,6 +72,10 @@ class Cegis():
 		raise Exception("Cannot satisfy decreasing condition on sampled data")
 
 	def verify(self, eps=1e-5):
+		"""
+		Since we are training the neural net every time, we need to compute the MIP formulation of NN every time
+		:param eps: The epsilon ball parameter
+		"""
 		print_segline("Verifier")
 		P = (self.L.T @ self.L).cpu().detach().numpy()
 		model = grb_model(convex=False)

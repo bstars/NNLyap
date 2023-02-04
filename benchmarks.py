@@ -27,6 +27,10 @@ class Benchmark(Formulated):
     def in_domain(self, x): pass
     
 class PWA(Benchmark):
+    """
+    Piecewise Affine system derived from MPC controller.
+    Example from https://arxiv.org/pdf/2012.12015.pdf section 5.1
+    """
     def __init__(self) -> None:
         super().__init__()
         self.dimension = 2
@@ -77,6 +81,12 @@ class PWA(Benchmark):
         return self.A @ x + self.B @ u
     
     def gurobi_formulation(self, model:gp.Model, x):
+        """
+        :param model: gp.Model
+        :param x: gp.MVar, representing the input of dynamical system
+        :return:
+            gp.MVar, representing the output of dynamical system
+        """
         xs = []
         mus = grb_bin_var( model, (len(self.modes),) )
         uacc = []
